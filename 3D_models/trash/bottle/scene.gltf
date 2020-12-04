@@ -1,0 +1,488 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 18604,
+      "max": [
+        1.4128468036651611,
+        1.2041932344436646,
+        5.7341246604919434
+      ],
+      "min": [
+        -1.4115793704986572,
+        -1.2121273279190063,
+        -4.1123576164245605
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 223248,
+      "componentType": 5126,
+      "count": 18604,
+      "max": [
+        1,
+        1,
+        0.9588463306427002
+      ],
+      "min": [
+        -1,
+        -1,
+        -0.99976754188537598
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 18604,
+      "max": [
+        0.80116236209869385,
+        0.99985724687576294
+      ],
+      "min": [
+        0.00014278932940214872,
+        0.00014278932940214872
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 108288,
+      "max": [
+        18603
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 446496,
+      "componentType": 5126,
+      "count": 128,
+      "max": [
+        0.47376012802124023,
+        0.47376099228858948,
+        6.1537008285522461
+      ],
+      "min": [
+        -0.47376164793968201,
+        -0.4737606942653656,
+        5.6456470489501953
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 448032,
+      "componentType": 5126,
+      "count": 128,
+      "max": [
+        0.99971151351928711,
+        0.99971151351928711,
+        0.66809934377670288
+      ],
+      "min": [
+        -0.99971151351928711,
+        -0.99971151351928711,
+        -0.73948836326599121
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 148832,
+      "componentType": 5126,
+      "count": 128,
+      "max": [
+        0,
+        0
+      ],
+      "min": [
+        0,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 433152,
+      "componentType": 5125,
+      "count": 756,
+      "max": [
+        127
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "dynastro (https://sketchfab.com/dynastro)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/bottle-9b1834ac141e432fa8081e5bf5835fb4",
+      "title": "Bottle"
+    },
+    "generator": "Sketchfab-7.82.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 436176,
+      "byteOffset": 0,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 149856,
+      "byteOffset": 436176,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 449568,
+      "byteOffset": 586032,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1035600,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "PLASTIC_MATERIAL",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.80000000000000004,
+          0.80000000000000004,
+          0.80000000000000004,
+          0.64195884146341464
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.80404082057734572
+      }
+    },
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "Material",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.72732469512195119,
+          0.72732469512195119,
+          0.72732469512195119,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.77639320225002106
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "low poly_PLASTIC MATERIAL_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Circle_Material_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.70710678118654746,
+        -0,
+        -0,
+        0.70710678118654757
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "e46dd26106d64cd49adf3cac069d1331.fbx"
+    },
+    {
+      "children": [
+        4,
+        6,
+        9,
+        11,
+        14
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        5
+      ],
+      "matrix": [
+        100,
+        0,
+        0,
+        0,
+        0,
+        -1.6292067939183141e-05,
+        -99.999999999998678,
+        0,
+        0,
+        99.999999999998678,
+        -1.6292067939183141e-05,
+        0,
+        0,
+        40.402824401855469,
+        0,
+        1
+      ],
+      "name": "low poly"
+    },
+    {
+      "mesh": 0,
+      "name": "low poly_PLASTIC MATERIAL_0"
+    },
+    {
+      "children": [
+        7
+      ],
+      "matrix": [
+        -29.08647719990347,
+        -5.5189064575668629,
+        -95.517119101714371,
+        0,
+        56.639309131094492,
+        79.467234285632031,
+        -21.839123978419661,
+        0,
+        77.110087759933748,
+        -60.452463565620441,
+        -19.988346967737169,
+        0,
+        1372.4307861328125,
+        1343.47021484375,
+        -415.3916015625,
+        1
+      ],
+      "name": "Light"
+    },
+    {
+      "children": [
+        8
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        2.2204460492503131e-16,
+        1,
+        0,
+        0,
+        -1,
+        2.2204460492503131e-16,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": ""
+    },
+    {
+      "name": ""
+    },
+    {
+      "children": [
+        10
+      ],
+      "matrix": [
+        -12.309154405276008,
+        -7.7424748137691735,
+        -98.937036926048961,
+        0,
+        -0.95592235874168485,
+        99.699827438881186,
+        -7.6832380530826567,
+        0,
+        99.234927859555398,
+        1.9621773753031313e-05,
+        -12.346217749110465,
+        0,
+        400.06076049804688,
+        337.30899047851562,
+        2804.3203125,
+        1
+      ],
+      "name": "Camera"
+    },
+    {
+      "name": ""
+    },
+    {
+      "children": [
+        12
+      ],
+      "matrix": [
+        98.662192499824812,
+        -5.5189059375052736,
+        15.339929868825363,
+        0,
+        -4.9614298237396826,
+        79.467226401933615,
+        60.500778028781831,
+        0,
+        -15.529199014408389,
+        -60.452478550258846,
+        78.130297202687998,
+        0,
+        -274.02059936523438,
+        1194.3984375,
+        655.09716796875,
+        1
+      ],
+      "name": "Light.001"
+    },
+    {
+      "children": [
+        13
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        2.2204460492503131e-16,
+        1,
+        0,
+        0,
+        -1,
+        2.2204460492503131e-16,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": ""
+    },
+    {
+      "name": ""
+    },
+    {
+      "children": [
+        15
+      ],
+      "matrix": [
+        100,
+        0,
+        0,
+        0,
+        0,
+        -1.6292067939183141e-05,
+        -99.999999999998678,
+        0,
+        0,
+        99.999999999998678,
+        -1.6292067939183141e-05,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Circle"
+    },
+    {
+      "mesh": 1,
+      "name": "Circle_Material_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
+

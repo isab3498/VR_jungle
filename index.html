@@ -1,0 +1,325 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
+    <script src="componentScript2.js"></script>
+    <script>
+        AFRAME.registerComponent('modify-materials', {
+            init: function() {
+                // Wait for model to load.
+                this.el.addEventListener('model-loaded', () => {
+                    // Grab the mesh / scene.
+                    const obj = this.el.getObject3D('mesh');
+                    // Go over the submeshes and modify materials we want.
+                    obj.traverse(node => {
+                        if (node.name.indexOf('ship') !== -1) {
+                            node.material.color.set('red');
+                        }
+                    });
+                });
+            }
+        });
+
+    </script>
+    <script>
+        AFRAME.registerComponent('play-pause', {
+            init: function() {
+                var myVideo = document.querySelector('#egmont');
+                var videoControls = document.querySelector('#videoControls');
+                this.el.addEventListener('click', function() {
+                    if (myVideo.paused) {
+                        myVideo.play();
+                        videoControls.setAttribute('src', '#pause');
+                    } else {
+                        myVideo.pause();
+                        videoControls.setAttribute('src', '#play');
+                    }
+                });
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <a-scene fog="color: #07450a">
+
+        <a-assets>
+            <a-asset-item id="tree" src="3D_models/trees/jungleTree/scene.gltf"></a-asset-item>
+            <a-asset-item id="cocotree" src="3D_models/trees/coconutTree/scene.gltf"></a-asset-item>
+            <a-asset-item id="monstera" src="3D_models/trees/monstera/scene.gltf"></a-asset-item>
+            <a-asset-item id="plant1" src="3D_models/trees/tropicalPant2/scene.gltf"></a-asset-item>
+            <a-asset-item id="plant2" src="3D_models/trees/tropicalPlant/scene.gltf"></a-asset-item>
+            <a-asset-item id="sign" src="3D_models/wooden_sign/scene.gltf"></a-asset-item>
+            <a-asset-item id="bow" src="3D_models/discourse_-_wooden_statue/scene.gltf"></a-asset-item>
+
+            <a-asset-item id="bottle" src="3D_models/trash/bottle/scene.gltf"></a-asset-item>
+            <a-asset-item id="bottle_of_water" src="3D_models/trash/bottle_of_water/scene.gltf"></a-asset-item>
+            <a-asset-item id="plastic_bag" src="3D_models/trash/plastic_bag/scene.gltf"></a-asset-item>
+            <a-asset-item id="plastic_fork" src="3D_models/trash/plastic_fork/scene.gltf"></a-asset-item>
+            <a-asset-item id="toothbrush" src="3D_models/trash/toothbrush/scene.gltf"></a-asset-item>
+            <a-asset-item id="trash_bag" src="3D_models/trash/trash_bag_v2_free/scene.gltf"></a-asset-item>
+
+            <a-mixin id='typeButton' ground geometry='primitive:box; height:0.5; width:0.8; depth:0.5' rotation='0 0 0' scale='1.5 2.5 2'></a-mixin>
+            <a-mixin id='infoButton' ground geometry='primitive:box; height:1.5; width:0.8; depth:0.5' rotation='0 0 0' scale='1.5 2.5 2'></a-mixin>
+            <a-mixin id='typeColumn' geometry='primitive:cylinder; height:1; radius:0.4;' scale='0.1 0.1 0.1'></a-mixin>
+            <a-mixin id='typeText' geometry='primitive: plane; height: auto; width: 0.75' material='visible:false' text='color:#ffffff; wrapCount:10; align:center'></a-mixin>
+            <a-mixin id='typeDescription' geometry='primitive: plane; height: auto; width: 2' scale="2.5 2.5 2.5" material='visible:false' text='color:#ffffff; wrapCount:10; align:center'></a-mixin>
+
+            <img id="homeThumbnail" src="img/Artboard4.png">
+
+            <img id="play" src="img/play.png">
+            <img id="pause" src="img/pause.png">
+            <video id="egmont" loop="true" src="videos/Kampagnevideo.mp4"></video>
+
+        </a-assets>
+
+
+        <a-entity environment="preset: yavapai; fog: 0.9; dressingAmount: 500 dressingColor: #9a8c3f; groundColor2: #0f2c02; groundColor: #598e32; skyColor: #a6e7f7; horizonColor: #093605; lightPosition: 0 45 -5; lighting: point; active: true; seed: 11; skyType: gradient; fog: 0.8; flatShading: true; ground: canyon; groundYScale: 9.76; groundTexture: walkernoise; dressing: stones; dressingAmount: 500; dressingScale: 0.06; dressingVariance: [object Object]; dressingOnPlayArea: 1; gridColor: #239893;">
+        </a-entity>
+        <a-sky radius="200" theta-length="110" class="environment" material="shader: gradientshader; topColor: #f0f2cb; bottomColor: #93c678"></a-sky>
+
+
+        <a-link class="selectable" href="https://marollemarie.dk/kea/4.semester/wordpress/" title="SAADAN! Du fandt vej i junglen" image="#homeThumbnail" peekMode="true" position="8 1 -3" scale="0.7 0.7 0.7" rotation="0 80 0"></a-link>
+
+        <a-sound src="musik/equador_jungle.wav" autoplay="true" position="0 5 0"></a-sound>
+
+        <a-entity position="0 0.9 0.3" rotation="0 0 0">
+            <a-entity gltf-model="#sign" scale="0.9 0.9 0.9" position="0 -0.4 -2" rotation="0 0 0"></a-entity>
+            <a-text position="-0.13 0 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="Kan du finde" color="#d49845"></a-text>
+            <a-text position="-0.16 -0.1 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="Vejen ud af den" color="#d49845"></a-text>
+            <a-text position="-0.19 -0.2 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="Baeredygtige jungle?" color="#d49845"></a-text>
+        </a-entity>
+
+
+
+        <!--____________________SCENE ENTITIES____________________-->
+
+        <!--RIG1 for general rotation of nested assembly-->
+        <a-entity class='rigAnchor' rotation='0 0 0'>
+
+            <!--RIG2 for positional offset and local rotation of the barchart-->
+            <a-entity class='rigOffset container' position='-3 0 -12' rotation='0 0 0' scale='1 1 1'>
+
+                <!--____________________BUTTONS____________________-->
+
+                <!--INTERACTION BUTTON - INCREASE-->
+                <a-entity id='greenWasClicked' class='selectable' mixin='typeButton' position='-0.5 0.5 0' material='color: #47ffcd' animation__mouseenter="property:  components.material.material.color; type: color; from: #47ffcd; to: #FFBF47; startEvents:  mouseenter; dur: 600" animation__mouseleave="property:  components.material.material.color; type: color; from: #47ffcd; to: #479cff; startEvents:  mouseleave; dur: 600"></a-entity>
+
+                <!--INTERACTION BUTTON - DECREASE-->
+                <a-entity id='redWasClicked' class='selectable' mixin='typeButton' position='0 -1 0' material='color: #FFBF47'></a-entity>
+
+
+                <!--____________________COLUMN-C1____________________-->
+
+                <!--c1-NUMBER-->
+                <a-entity id='n1' mixin='typeText' text='value: n/a'></a-entity>
+                <!--c1-COLUMN-->
+                <a-entity id='c1' mixin='typeColumn' material='color: #90733e'></a-entity>
+
+                <!--____________________COLUMN-C2____________________-->
+                <!--c2-NUMBER-->
+                <a-entity id='n2' mixin='typeText' text='value: n/a'></a-entity>
+                <!--c2-COLUMN-->
+                <a-entity id='c2' mixin='typeColumn' material='color: #90733e'></a-entity>
+
+                <!--____________________COLUMN-C3____________________-->
+                <!--c2-NUMBER-->
+                <a-entity id='n3' mixin='typeText' text='value: n/a'></a-entity>
+                <!--c2-COLUMN-->
+                <a-entity id='c3' mixin='typeColumn' material='color: #90733e'></a-entity>
+
+                <!--____________________COLUMN-C4____________________-->
+                <!--c2-NUMBER-->
+                <a-entity id='n4' mixin='typeText' text='value: n/a'></a-entity>
+                <!--c2-COLUMN-->
+                <a-entity id='c4' mixin='typeColumn' material='color: #90733e'></a-entity>
+
+                <!--____________________COLUMN-C5____________________-->
+                <!--c2-NUMBER-->
+                <a-entity id='n5' mixin='typeText' text='value: n/a'></a-entity>
+                <!--c2-COLUMN-->
+                <a-entity id='c5' mixin='typeColumn' material='color: #90733e'></a-entity>
+
+                <!--____________________COLUMN-C6____________________-->
+                <!--c2-NUMBER-->
+                <a-entity id='n6' mixin='typeText' text='value: n/a'></a-entity>
+                <!--c2-COLUMN-->
+                <a-entity id='c6' mixin='typeColumn' material='color: #90733e'></a-entity>
+
+                <!--____________________COLUMN-C7____________________-->
+                <!--c2-NUMBER-->
+                <a-entity id='n7' mixin='typeText' text='value: n/a'></a-entity>
+                <!--c2-COLUMN-->
+                <a-entity id='c7' mixin='typeColumn' material='color: red'></a-entity>
+
+
+                <!--____________________INFO____________________-->
+
+                <!--t1-TEXT-->
+                <!--                <a-entity id='totalEntries' mixin='typeDescription' position='3 0 2' rotation='0 0 0' text='value: n/a; wrapCount:25'></a-entity>-->
+
+                <!--t2-TEXT-->
+                <a-entity id='myDescription' mixin='typeDescription' position='3.8 0.3 2' rotation='-50 0 0' text='value: ; wrapCount:25'></a-entity>
+
+
+                <a-entity position='-0.5 0.6 0.5' rotation='0 0 -10' scale="1.8 1.8 1.8" geometry='primitive: plane; height: auto; width: 2' text=' color:#ffffff; value: Klik her ; wrapCount:25; align:center' material='visible:false' animation="property: rotation; to: 0 0 10;  loop: true; dur: 1500 easing: linear; dir: alternate;"></a-entity>
+
+
+                <!--closes RIG2-->
+            </a-entity>
+
+            <!--closes RIG1-->
+        </a-entity>
+
+        <a-entity id="mouseCursor" cursor="rayOrigin: mouse; fuse: false;" raycaster="objects: .selectable ;"></a-entity>
+
+        <a-entity id="myCameraPosition" position="0 1 0" rotation="0 0 0">
+            <a-entity id="myCamera" camera look-controls wasd-controls="acceleration: 120">
+            </a-entity>
+        </a-entity>
+
+        <a-video src="#egmont" width="16" height="9" position="-15 6 -4" rotation="0 70 0">
+            <a-image class="selectable" id="videoControls" src="#play" position="0 -5.1 4.24" scale="0.7 0.7 1.1" rotation="0 0 0" play-pause>
+            </a-image>
+            <a-circle color="#ffffff" radius="0.5" position="0 -5.1 4.24"></a-circle>
+        </a-video>
+
+
+        <!-- <a-entity gltf-model="#discus1" scale="0.01 0.01 0.01" position="-34 2 -3" animation="property: position; to: 35 8 -10; dur: 22000; easing: linear; loop: true" animation-mixer></a-entity> -->
+
+
+
+        <a-entity position="0.6 1 2" rotation="0 190 0">
+            <a-entity gltf-model="#sign" scale="0.9 0.9 0.9" position="0 -0.4 -2" rotation="0 0 0"></a-entity>
+            <a-text position="-0.025 0 -1.89" rotation="0 0 0" scale="0.4 0.4 0.4" value="1. " color="#d49845"></a-text>
+            <a-text position="-0.25 -0.1 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="Tag din egen pose med" color="#d49845"></a-text>
+            <a-text position="-0.13 -0.2 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="ud at handle." color="#d49845"></a-text>
+        </a-entity>
+        <a-entity position="0 1 3" rotation="0 160 0">
+            <a-entity gltf-model="#sign" scale="0.9 0.9 0.9" position="0 -0.4 -2" rotation="0 0 0"></a-entity>
+            <a-text position="-0.025 0 -1.89" rotation="0 0 0" scale="0.4 0.4 0.4" value="2. " color="#d49845"></a-text>
+            <a-text position="-0.25 -0.1 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="Invester i en god drikkedunk" color="#d49845"></a-text>
+            <a-text position="-0.17 -0.2 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="som kan genbruges." color="#d49845"></a-text>
+        </a-entity>
+        <a-entity position="-1.6 1 3.6" rotation="0 140 0">
+            <a-entity gltf-model="#sign" scale="0.9 0.9 0.9" position="0 -0.4 -2" rotation="0 0 0"></a-entity>
+            <a-text position="-0.025 0 -1.89" rotation="0 0 0" scale="0.4 0.4 0.4" value="3. " color="#d49845"></a-text>
+            <a-text position="-0.18 -0.1 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="Undgaa unoedvendig " color="#d49845"></a-text>
+            <a-text position="-0.13 -0.2 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="plastikemballage." color="#d49845"></a-text>
+        </a-entity>
+        <a-entity position="-2.2 1 3" rotation="0 10 0">
+            <a-entity gltf-model="#sign" scale="0.9 0.9 0.9" position="0 -0.4 -2" rotation="0 0 0"></a-entity>
+            <a-text position="-0.025 0 -1.89" rotation="0 0 0" scale="0.4 0.4 0.4" value="4. " color="#d49845"></a-text>
+            <a-text position="-0.21 -0.1 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="Opbevar madrester i " color="#d49845"></a-text>
+            <a-text position="-0.15 -0.2 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="boetter og glas." color="#d49845"></a-text>
+        </a-entity>
+        <a-entity position="-3 1 3" rotation="0 100 0">
+            <a-entity gltf-model="#sign" scale="0.9 0.9 0.9" position="0 -0.4 -2" rotation="0 0 0"></a-entity>
+            <a-text position="-0.025 0 -1.89" rotation="0 0 0" scale="0.4 0.4 0.4" value="5. " color="#d49845"></a-text>
+            <a-text position="-0.17 -0.1 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="Sorter, og genbrug" color="#d49845"></a-text>
+            <a-text position="-0.15 -0.2 -1.89" rotation="0 0 0" scale="0.2 0.2 0.2" value="dit plastikaffald." color="#d49845"></a-text>
+        </a-entity>
+
+
+        <a-entity gltf-model="#bottle" scale="0.0009 0.0009 0.0009" position="2 0.1 -9" rotation="0 0 90"></a-entity>
+
+        <a-entity position="0 0 0.5" scale="0.5 0.6 0.5">
+            <a-entity gltf-model="#bow" scale="0.5 0.3 0.5" position="0 1 3.5" rotation="0 0 0"></a-entity>
+            <a-text position="1.1 3.4 3.21" rotation="0 176 0" scale="1 1 1" value="5 tips til mindre plastspild" color="#e3e3e3"></a-text>
+        </a-entity>
+
+        <!-- step 1 -->
+
+        <a-entity gltf-model="#tree" scale="0.5 0.5 0.5" position="-1.5 0 0" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#tree" scale="0.5 0.5 0.5" position="1 0 -2.7" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#cocotree" scale="0.01 0.01 0.01" position="2.5 0.1 1.5" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#cocotree" scale="0.01 0.01 0.01" position="2.5 0.1 -1" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#cocotree" scale="0.01 0.01 0.01" position="-3 0.1 -1" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.007 0.007 0.007" position="-0.7 0.1 -2.3" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.009 0.009 0.009" position="-2.5 0.1 -1.2" rotation="0 190 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.005 0.005 0.005" position="-1.1 0.1 -1.5" rotation="0 190 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="1 1 1" position="1.3 0.1 -1.5" rotation="0 20 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="1 2 1" position="-1.3 0.1 -2" rotation="0 20 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="1 2 1" position="-3 0.1 0" rotation="0 20 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="0.8 0.9 0.8" position="-1.9 0.1 1.4" rotation="0 -20 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="0.4 0.5 0.4" position="-1.4 0.1 -0.2" rotation="0 20 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.005 0.006 0.005" position="1.7 0.1 " rotation="0 -10 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="0.9 1.5 0.9" position="1.6 0.1 2.7" rotation="0 20 0"></a-entity>
+
+        <!-- step 2 -->
+
+        <a-entity gltf-model="#tree" scale="0.5 0.5 0.5" position="-1.5 0 5.5" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#tree" scale="1 1 0.5" position="1.5 0 6" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#cocotree" scale="0.01 0.01 0.01" position="1.7 0.1 5" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.01 0.01 0.01" position="-4 0 6.5" rotation="0 50 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="1 1.5 1" position="-0.5 0.1 6" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#monstera" scale="0.1 0.1 0.1" position="-90 0.1 30" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#monstera" scale="0.1 0.1 0.1" position="-140 0.1 40" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#monstera" scale="0.1 0.1 0.1" position="-140 0.1 90" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#monstera" scale="0.05 0.05 0.05" position="-60 0.1 40" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#tree" scale="1 1 0.5" position="-5 0 8" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="1 1.8 1" position="3 0.1 4" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#cocotree" scale="0.01 0.01 0.01" position="-7 0.1 5" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="1 1.8 1" position="-5 0.1 6" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.004 0.004 0.004" position="-4.5 0 4.5" rotation="0 50 0"></a-entity>
+        <a-entity gltf-model="#cocotree" scale="0.01 0.007 0.01" position="-17 0.1 -4" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#tree" scale="0.5 0.5 0.5" position="-21 0 -1" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#tree" scale="0.5 0.5 0.5" position="-21 0 4" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="2 2 2" position="-12 0.1 5" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="2 2.5 2" position="-11 0.1 7" rotation="0 70 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.004 0.004 0.004" position="-8 0 3" rotation="0 50 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.004 0.006 0.004" position="-11 0 2" rotation="0 50 0"></a-entity>
+
+        <!-- step 3 -->
+
+        <a-entity gltf-model="#monstera" scale="0.1 0.1 0.1" position="-80 0.1 30" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="2 2.5 2" position="9 0.1 3" rotation="0 70 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="2 2.5 2" position="10.5 0.1 -5" rotation="0 70 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="2 4 2" position="14 0.1 -4" rotation="0 70 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.009 0.009 0.009" position="6 0 1" rotation="0 50 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.015 0.02 0.015" position="10 0 1" rotation="0 20 0"></a-entity>
+
+
+        <a-entity gltf-model="#tree" scale="0.5 0.5 0.5" position="-11 0.1 -13" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#tree" scale="1 1 1" position="-7 0.1 -29" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#tree" scale="1 1 1" position="15 0.1 -23" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#tree" scale="1 1 1" position="25 0.1 -1" rotation="0 0 0"></a-entity>
+
+
+        <a-entity gltf-model="#cocotree" scale="0.01 0.01 0.01" position="2 0.1 -13" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#cocotree" scale="0.01 0.01 0.01" position="17 0.1 -10" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#cocotree" scale="0.019 0.019 0.019" position="17 0.1 -1" rotation="0 0 0"></a-entity>
+
+        <a-entity gltf-model="#monstera" scale="0.1 0.1 0.1" position="3 0.1 -13" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#monstera" scale="0.1 0.1 0.1" position="2 0.1 45" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#monstera" scale="0.1 0.1 0.1" position="-15 0.1 -50" rotation="0 0 0"></a-entity>
+
+        <a-entity gltf-model="#plant1" scale="0.01 0.01 0.01" position="4 0.1 -13" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.06 0.06 0.01" position="4 0.1 -30" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.06 0.06 0.01" position="-6 0.1 -30" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.06 0.06 0.01" position="27 0.1 -20" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.06 0.06 0.01" position="20 0.1 -30" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant1" scale="0.01 0.01 0.01" position="8 0.1 -10" rotation="0 0 0"></a-entity>
+
+        <a-entity gltf-model="#plant2" scale="1 1 1" position="8 0.1 -13" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="4 4 4" position="13 0.1 -21" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="4 4 4" position="-13 0.1 -21" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#plant2" scale="4 4 4" position="-19 0.1 -17" rotation="0 0 0"></a-entity>
+
+
+
+
+
+
+
+
+    </a-scene>
+
+</body>
+
+</html>
